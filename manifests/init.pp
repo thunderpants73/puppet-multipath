@@ -104,7 +104,7 @@ class multipath(
     $rr_min_io            = $multipath::params::rr_min_io,
     $user_friendly_names  = $multipath::params::user_friendly_names,
     $max_fds              = $multipath::params::max_fds,
-    $manage_rclocal       = false,
+    $manage_rclocal       = true,
 )
 inherits multipath::params
 {
