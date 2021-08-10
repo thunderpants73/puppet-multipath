@@ -53,6 +53,7 @@
 #     in this file.
 # $max_fds:: Sets the maximum number of open file descriptors for the multipathd
 #     process. Possible values: max|n > 0
+# $manage_rclocal:: *Default*: true. Allow rclocal to be disabled for newer systems
 #
 # == Actions:
 #
@@ -102,7 +103,8 @@ class multipath(
     $rr_weight            = $multipath::params::rr_weight,
     $rr_min_io            = $multipath::params::rr_min_io,
     $user_friendly_names  = $multipath::params::user_friendly_names,
-    $max_fds              = $multipath::params::max_fds
+    $max_fds              = $multipath::params::max_fds,
+    $manage_rclocal       = true,
 )
 inherits multipath::params
 {

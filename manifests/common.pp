@@ -40,11 +40,13 @@ class multipath::common {
         require => Package['multipath'],
     }
 
-    include ::rclocal
-    rclocal::update { 'Increase timeout for FC':
-        ensure  => $multipath::ensure,
-        content => template('multipath/rc.local.access_timeout.erb'),
-        order   => 20,
+    if $multipath::manage_rclocal {
+        include ::rclocal
+        rclocal::update { 'Increase timeout for FC':
+            ensure  => $multipath::ensure,
+            content => template('multipath/rc.local.access_timeout.erb'),
+            order   => 20,
+        }
     }
 
     # TODO: deal with ensure != 'present'
