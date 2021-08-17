@@ -92,7 +92,7 @@ class multipath(
     $configfile_source      = '',
     $configfile             = $multipath::params::configfile,
     Enum['strict','no','yes','greedy','smart'] $find_multipaths = 'no',
-    $polling_interval       = $multipath::params::polling_interval,
+    Integer $polling_interval = 5,
     $selector               = $multipath::params::selector,
     $path_grouping_policy   = $multipath::params::path_grouping_policy,
     $getuid_callout         = $multipath::params::getuid_callout,
