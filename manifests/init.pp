@@ -93,7 +93,7 @@ class multipath(
     $configfile             = $multipath::params::configfile,
     Enum['strict','no','yes','greedy','smart'] $find_multipaths = 'no',
     Integer $polling_interval = 5,
-    Enum['round-robin 0','queue-length 0','service-time 0'] $selector = 'service-time 0',
+    Enum['round-robin 0','queue-length 0','service-time 0'] $selector = 'round-robin 0',
     Enum['failover','multibus','group_by_serial','group_by_prio','group_by_node_name'] $path_grouping_policy = 'multibus',
     $getuid_callout         = $multipath::params::getuid_callout,
     $prio_callout           = $multipath::params::prio_callout,
