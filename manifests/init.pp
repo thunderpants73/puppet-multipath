@@ -118,7 +118,7 @@ class multipath(
 
     case $::operatingsystem {
         'debian', 'ubuntu':         { include ::multipath::common::debian }
-        'redhat', 'fedora', 'centos': { include ::multipath::common::redhat }
+        'redhat', 'fedora', 'centos', 'OracleLinux': { include ::multipath::common::redhat }
         default: {
             fail("Module ${module_name} is not supported on ${::operatingsystem}")
         }
