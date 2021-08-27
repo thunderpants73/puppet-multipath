@@ -15,7 +15,11 @@
 # Base class to be inherited by the other multipath classes
 #
 # Note: respect the Naming standard provided here[http://projects.puppetlabs.com/projects/puppet/wiki/Module_Standards]
-class multipath::common {
+class multipath::common(
+    String $configfile_owner = lookup('multipath::configfile_owner'),
+    String $configfile_group = lookup('multipath::configfile_group'),
+    String $configfile_mode  = lookup('multipath::configfile_mode'),
+){
 
     package { 'multipath':
         ensure => $multipath::ensure,
@@ -49,9 +53,9 @@ class multipath::common {
     # TODO: deal with ensure != 'present'
     concat { $multipath::configfile:
         warn    => false,
-        owner   => $multipath::configfile_owner,
-        group   => $multipath::configfile_group,
-        mode    => $multipath::configfile_mode,
+        owner   => $configfile_owner,
+        group   => $configfile_group,
+        mode    => $configfile_mode,
         require => Package['multipath'],
         notify  => Service['multipath'],
     }
