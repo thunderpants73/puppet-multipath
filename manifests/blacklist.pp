@@ -83,8 +83,6 @@ define multipath::blacklist (
 )
 {
 
-    include ::multipath::params
-
     # $name is provided by define invocation
     $blacklist_name = $name
 

@@ -91,19 +91,17 @@ define multipath::device (
     $product_blacklist = '',
     $hardware_handler  = '',
     $features          = '',
-    $path_grouping_policy = $multipath::params::path_grouping_policy,
-    $getuid_callout    = $multipath::params::getuid_callout,
-    $path_selector     = $multipath::params::selector,
-    $path_checker      = $multipath::params::path_checker,
-    $prio_callout      = $multipath::params::prio_callout,
-    $failback          = $multipath::params::failback,
-    $no_path_retry     = $multipath::params::no_path_retry,
-    $rr_weight         = $multipath::params::rr_weight,
-    $rr_min_io         = $multipath::params::rr_min_io
+    $path_grouping_policy = $multipath::path_grouping_policy,
+    $getuid_callout    = $multipath::getuid_callout,
+    $path_selector     = $multipath::selector,
+    $path_checker      = $multipath::path_checker,
+    $prio_callout      = $multipath::prio_callout,
+    $failback          = $multipath::failback,
+    $no_path_retry     = $multipath::no_path_retry,
+    $rr_weight         = $multipath::rr_weight,
+    $rr_min_io         = $multipath::rr_min_io
 )
 {
-    include ::multipath::params
-
     # $name is provided by define invocation and is should be set to the
     # vendor, unless the vendor attribute is set
     $vendorname = $vendor ? {
@@ -141,8 +139,8 @@ define multipath::device (
         }
     }
 
-    concat::fragment { "${multipath::params::configfile}_device_${vendorname}":
-        target  => $multipath::params::configfile,
+    concat::fragment { "${multipath::configfile}_device_${vendorname}":
+        target  => $multipath::configfile,
         order   => '20',
         content => $real_content,
         source  => $real_source,

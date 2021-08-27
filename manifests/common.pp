@@ -17,9 +17,6 @@
 # Note: respect the Naming standard provided here[http://projects.puppetlabs.com/projects/puppet/wiki/Module_Standards]
 class multipath::common {
 
-    # Load the variables used in this module. Check the multipath-params.pp file
-    require ::multipath::params
-
     package { 'multipath':
         ensure => $multipath::ensure,
         name   => $multipath::package_name,
@@ -52,9 +49,9 @@ class multipath::common {
     # TODO: deal with ensure != 'present'
     concat { $multipath::configfile:
         warn    => false,
-        owner   => $multipath::params::configfile_owner,
-        group   => $multipath::params::configfile_group,
-        mode    => $multipath::params::configfile_mode,
+        owner   => $multipath::configfile_owner,
+        group   => $multipath::configfile_group,
+        mode    => $multipath::configfile_mode,
         require => Package['multipath'],
         notify  => Service['multipath'],
     }
