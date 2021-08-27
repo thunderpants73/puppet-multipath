@@ -82,30 +82,33 @@
 #
 # [Remember: No empty lines between comments and class definition]
 #
+# leaving most configuration variables undef to allow for OS defaults
+#
+#
 class multipath(
-    Enum['present','absent'] $ensure          = 'present',
-    String $package_name                      = 'device-mapper-multipath',
-    Enum['stopped','running'] $service_ensure = 'running',
-    Boolean $service_enable                   = true,
-    String $service_name                      = 'multipathd',
-    String $processname                       = 'multipathd',
-    String $access_timeout                    = '45',
-    $configfile_source                        = '',
-    String $configfile                        = '/etc/multipath.conf.new',
-    Boolean $manage_rclocal                   = true,
-    String $max_fds                           = 'max',
-    Optional[Enum['strict','no','yes','greedy','smart']] $find_multipaths,
-    Optional[String] $polling_interval,
-    Optional[Enum['round-robin 0','queue-length 0','service-time 0']] $selector,
-    Optional[Enum['failover','multibus','group_by_serial','group_by_prio','group_by_node_name']] $path_grouping_policy,
-    Optional[String] $getuid_callout,
-    Optional[String] $prio,
-    Optional[Enum['readsector0','tur','emc_clariion','hp_sw','rdac','directio','cciss_tur','none']] $path_checker,
-    Optional[Enum['immediate','manual','followover']] $failback,
-    Optional[Enum['fail','queue']] $no_path_retry,
-    Optional[Enum['priorities','uniform']] $rr_weight,
-    Optional[Integer] $rr_min_io,
-    Optional[Enum['yes','no']] $user_friendly_names,
+    Enum['present','absent'] $ensure                                                                                   = 'present',
+    String $package_name                                                                                               = 'device-mapper-multipath',
+    Enum['stopped','running'] $service_ensure                                                                          = 'running',
+    Boolean $service_enable                                                                                            = true,
+    String $service_name                                                                                               = 'multipathd',
+    String $processname                                                                                                = 'multipathd',
+    String $access_timeout                                                                                             = '45',
+    $configfile_source                                                                                                 = '',
+    String $configfile                                                                                                 = '/etc/multipath.conf.new',
+    Boolean $manage_rclocal                                                                                            = true,
+    String $max_fds                                                                                                    = 'max',
+    Optional[Enum['strict','no','yes','greedy','smart']] $find_multipaths                                              = undef,
+    Optional[String] $polling_interval                                                                                 = undef,
+    Optional[Enum['round-robin 0','queue-length 0','service-time 0']] $selector                                        = undef,
+    Optional[Enum['failover','multibus','group_by_serial','group_by_prio','group_by_node_name']] $path_grouping_policy = undef,
+    Optional[String] $getuid_callout                                                                                   = undef,
+    Optional[String] $prio                                                                                             = undef,
+    Optional[Enum['readsector0','tur','emc_clariion','hp_sw','rdac','directio','cciss_tur','none']] $path_checker      = undef,
+    Optional[Enum['immediate','manual','followover']] $failback                                                        = undef,
+    Optional[Enum['fail','queue']] $no_path_retry                                                                      = undef,
+    Optional[Enum['priorities','uniform']] $rr_weight                                                                  = undef,
+    Optional[Integer] $rr_min_io                                                                                       = undef,
+    Optional[Enum['yes','no']] $user_friendly_names                                                                    = undef,
 ){
 
     info ("Configuring multipath package (with ensure = ${ensure})")
