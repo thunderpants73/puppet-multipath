@@ -105,7 +105,7 @@ class multipath(
     Optional[String] $prio                                                                                             = undef,
     Optional[Enum['const','sysfs','emc','alua','ontap','rdac','hp_sw','hds','random','weightedpath','path_latency','ana','datacore','iet']] $prio_callout = undef,
     Optional[Enum['readsector0','tur','emc_clariion','hp_sw','rdac','directio','cciss_tur','none']] $path_checker      = undef,
-    Optional[Enum['immediate','manual','followover']] $failback                                                        = undef,
+    Optional[Variant[Enum['immediate','manual','followover'], Integer]] $failback                                      = undef,
     Optional[Enum['fail','queue']] $no_path_retry                                                                      = undef,
     Optional[Enum['priorities','uniform']] $rr_weight                                                                  = undef,
     Optional[Integer] $rr_min_io                                                                                       = undef,
