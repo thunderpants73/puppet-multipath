@@ -1,0 +1,6 @@
+---
+multipath::prio: 'alua /dev/%n'
+multipath::package_name: 'multipath-tools'
+multipath::service_name: 'multipath-tools'
+multipath::processname: 'multipath-tools'
+multipath::hasstatus: false

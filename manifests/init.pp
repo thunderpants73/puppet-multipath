@@ -83,47 +83,32 @@
 # [Remember: No empty lines between comments and class definition]
 #
 class multipath(
-    $ensure                 = $multipath::params::ensure,
-    $package_name           = $multipath::params::package_name,
-    $service_ensure         = $multipath::params::service_ensure,
-    $service_enable         = $multipath::params::service_enable,
-    $service_name           = $multipath::params::service_name,
-    $access_timeout         = $multipath::params::access_timeout,
-    $configfile_source      = '',
-    $configfile             = $multipath::params::configfile,
-    Enum['strict','no','yes','greedy','smart'] $find_multipaths = 'no',
-    Integer $polling_interval = 5,
-    Enum['round-robin 0','queue-length 0','service-time 0'] $selector = 'round-robin 0',
-    Enum['failover','multibus','group_by_serial','group_by_prio','group_by_node_name'] $path_grouping_policy = 'multibus',
-    $getuid_callout         = $multipath::params::getuid_callout,
-    $prio_callout           = $multipath::params::prio_callout,
-    $prio                   = $multipath::params::prio,
-    $path_checker           = $multipath::params::path_checker,
-    $failback               = $multipath::params::failback,
-    $no_path_retry          = $multipath::params::no_path_retry,
-    $rr_weight              = $multipath::params::rr_weight,
-    $rr_min_io              = $multipath::params::rr_min_io,
-    $user_friendly_names    = $multipath::params::user_friendly_names,
-    $max_fds                = $multipath::params::max_fds,
-    Boolean $manage_rclocal = true,
-)
-inherits multipath::params
-{
+    Enum['present','absent'] $ensure          = 'present',
+    String $package_name                      = 'device-mapper-multipath',
+    Enum['stopped','running'] $service_ensure = 'running',
+    Boolean $service_enable                   = true,
+    String $service_name                      = 'multipathd',
+    String $processname                       = 'multipathd',
+    String $access_timeout                    = '45',
+    $configfile_source                        = '',
+    String $configfile                        = '/etc/multipath.conf.new',
+    Boolean $manage_rclocal                   = true,
+    String $max_fds                           = 'max',
+    Optional[Enum['strict','no','yes','greedy','smart']] $find_multipaths,
+    Optional[String] $polling_interval,
+    Optional[Enum['round-robin 0','queue-length 0','service-time 0']] $selector,
+    Optionnal[Enum['failover','multibus','group_by_serial','group_by_prio','group_by_node_name']] $path_grouping_policy,
+    Optional[String] $getuid_callout,
+    Optional[String] $prio,
+    Optional[Enum['readsector0','tur','emc_clariion','hp_sw','rdac','directio','cciss_tur','none']] $path_checker,
+    Optional[Enum['immediate','manual','followover']] $failback,
+    Optional[Enum['fail','queue']] $no_path_retry,
+    Optional[Enum['priorities','uniform']] $rr_weight,
+    Optional[Integer] $rr_min_io,
+    Optional[Enum['yes','no']] $user_friendly_names,
+){
 
     info ("Configuring multipath package (with ensure = ${ensure})")
-
-    if ! ($ensure in [ 'present', 'absent' ]) {
-        fail("Invalid multipath 'ensure' parameter")
-    }
-    if ! ($path_grouping_policy in [ 'failover', 'multibus', 'group_by_serial', 'group_by_prio', 'group_by_node_name']) {
-        fail("Invalid multipath 'path_grouping_policy' parameter")
-    }
-    if ($selector != 'round-robin 0') {
-        fail("Invalid multipath 'selector' parameter")
-    }
-    if ! ($path_checker in [ 'readsector0', 'tur', 'emc_clariion', 'hp_sw', 'directio', 'rdac', 'cciss_tur']) {
-        fail("Invalid multipath 'path_checker' parameter")
-    }
 
     case $::operatingsystem {
         'debian', 'ubuntu':         { include ::multipath::common::debian }

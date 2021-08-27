@@ -1,0 +1,8 @@
+---
+multipath::hasstatus: true
+multipath::hasrestart: true
+multipath::configfile: '/etc/multipath.conf.new'
+multipath::configfile_mode: '0644'
+multipath::configfile_owner: 'root'
+multipath::configfile_group: 'root'
+multipath::find_multipaths: 'no'
