@@ -97,7 +97,7 @@ class multipath(
     Optional[Enum['strict','no','yes','greedy','smart']] $find_multipaths,
     Optional[String] $polling_interval,
     Optional[Enum['round-robin 0','queue-length 0','service-time 0']] $selector,
-    Optionnal[Enum['failover','multibus','group_by_serial','group_by_prio','group_by_node_name']] $path_grouping_policy,
+    Optional[Enum['failover','multibus','group_by_serial','group_by_prio','group_by_node_name']] $path_grouping_policy,
     Optional[String] $getuid_callout,
     Optional[String] $prio,
     Optional[Enum['readsector0','tur','emc_clariion','hp_sw','rdac','directio','cciss_tur','none']] $path_checker,
