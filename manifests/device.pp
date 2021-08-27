@@ -99,7 +99,9 @@ define multipath::device (
     $failback          = $multipath::failback,
     $no_path_retry     = $multipath::no_path_retry,
     $rr_weight         = $multipath::rr_weight,
-    $rr_min_io         = $multipath::rr_min_io
+    $rr_min_io         = $multipath::rr_min_io,
+    $fast_io_fail_tmo  = $multipath::fast_io_fail_tmo,
+    $dev_loss_tmo      = $multipath::dev_loss_tmo,
 )
 {
     # $name is provided by define invocation and is should be set to the

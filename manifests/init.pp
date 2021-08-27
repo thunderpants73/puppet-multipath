@@ -110,6 +110,8 @@ class multipath(
     Optional[Enum['priorities','uniform']] $rr_weight                                                                  = undef,
     Optional[Integer] $rr_min_io                                                                                       = undef,
     Optional[Enum['yes','no']] $user_friendly_names                                                                    = undef,
+    Optional[Integer] $fast_io_fail_tmo                                                                                = undef,
+    Optional[Integer] $dev_loss_tmo                                                                                    = undef,
 ){
 
     info ("Configuring multipath package (with ensure = ${ensure})")
