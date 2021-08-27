@@ -103,7 +103,7 @@ class multipath(
     Optional[Enum['failover','multibus','group_by_serial','group_by_prio','group_by_node_name']] $path_grouping_policy = undef,
     Optional[String] $getuid_callout                                                                                   = undef,
     Optional[String] $prio                                                                                             = undef,
-    Optional[String] $prio_callout                                                                                     = undef,
+    Optional[Enum['const','sysfs','emc','alua','ontap','rdac','hp_sw','hds','random','weightedpath','path_latency','ana','datacore','iet']] $prio_callout = undef,
     Optional[Enum['readsector0','tur','emc_clariion','hp_sw','rdac','directio','cciss_tur','none']] $path_checker      = undef,
     Optional[Enum['immediate','manual','followover']] $failback                                                        = undef,
     Optional[Enum['fail','queue']] $no_path_retry                                                                      = undef,
