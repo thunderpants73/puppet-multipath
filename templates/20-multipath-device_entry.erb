@@ -44,4 +44,10 @@
 <% if @rr_min_io != scope.lookupvar('multipath::rr_min_io') -%>
         rr_min_io           <%= @rr_min_io %>
 <% end -%>
+<% if @fast_io_fail_tmo != '' -%>
+        fast_io_fail_tmo           <%= @fast_io_fail_tmo %>
+<% end -%>
+<% if @dev_loss_tmo != '' -%>
+        dev_loss_tmo           <%= @dev_loss_tmo %>
+<% end -%>
     }
