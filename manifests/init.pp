@@ -116,9 +116,9 @@ class multipath(
 
     info ("Configuring multipath package (with ensure = ${ensure})")
 
-    case $::operatingsystem {
+    case downcase($::operatingsystem) {
         'debian', 'ubuntu':         { include ::multipath::common::debian }
-        'redhat', 'fedora', 'centos', 'OracleLinux': { include ::multipath::common::redhat }
+        'redhat', 'fedora', 'centos', 'oraclelinux': { include ::multipath::common::redhat }
         default: {
             fail("Module ${module_name} is not supported on ${::operatingsystem}")
         }
