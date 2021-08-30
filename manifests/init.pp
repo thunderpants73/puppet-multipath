@@ -96,6 +96,7 @@ class multipath(
     $configfile_source                                                                                                 = '',
     String $configfile                                                                                                 = '/etc/multipath.conf.new',
     Boolean $manage_rclocal                                                                                            = true,
+    Boolean $manage_multipath_package                                                                                  = true,
     String $max_fds                                                                                                    = 'max',
     Optional[Enum['strict','no','yes','greedy','smart']] $find_multipaths                                              = undef,
     Optional[String] $polling_interval                                                                                 = undef,
