@@ -21,26 +21,24 @@ class multipath::common(
     String $configfile_mode  = lookup('multipath::configfile_mode'),
 ){
 
-    if $multipath::manage_multipath_package {
-        package { 'multipath':
-            ensure => $multipath::ensure,
-            name   => $multipath::package_name,
-        }
+    package { 'multipath':
+        ensure => $multipath::ensure,
+        name   => $multipath::package_name,
+    }
 
-        if $multipath::ensure == 'present' {
-            $multipath_service_ensure = $multipath::service_ensure
-            $multipath_service_enable = $multipath::service_enable
-        } else {
-            $multipath_service_ensure = 'stopped'
-            $multipath_service_enable = false
-        }
+    if $multipath::ensure == 'present' {
+        $multipath_service_ensure = $multipath::service_ensure
+        $multipath_service_enable = $multipath::service_enable
+    } else {
+        $multipath_service_ensure = 'stopped'
+        $multipath_service_enable = false
+    }
 
-        service { 'multipath':
-            ensure  => $multipath_service_ensure,
-            enable  => $multipath_service_enable,
-            name    => $multipath::service_name,
-            require => Package['multipath'],
-        }
+    service { 'multipath':
+        ensure  => $multipath_service_ensure,
+        enable  => $multipath_service_enable,
+        name    => $multipath::service_name,
+        require => Package['multipath'],
     }
 
     if $multipath::manage_rclocal {
