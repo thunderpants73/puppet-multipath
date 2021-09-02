@@ -23,7 +23,7 @@ defaults {
     polling_interval        <%= @polling_interval %>
 <% end -%>
 
-<% if @selector != '' -%>
+<% if @selector -%>
     # Default path selector algorithm to use
     <% if ((@operatingsystem =~ /centos|redhat/i) and (@lsbmajdistrelease.to_i >= 6)) -%>
     # multipath 0.49 / Centos 6
@@ -37,19 +37,19 @@ defaults {
     <% end %>
 <% end -%>
 
-<% if @path_grouping_policy != '' -%>
+<% if @path_grouping_policy -%>
     # Default path grouping policy to apply to unspecified multipaths
     path_grouping_policy    <%= @path_grouping_policy %>
 <% end -%>
 
-<% if @getuid_callout != '' -%>
+<% if @getuid_callout -%>
     <% if ((@operatingsystem =~ /centos|redhat/i) and (@lsbmajdistrelease.to_i <= 6)) -%>
     # Default program and args to callout to obtain a unique path identifier
     getuid_callout          "<%= @getuid_callout %>"
     <% end -%>
 <% end -%>
 
-<% if (@prio != '') or (@prio_callout != '') -%>
+<% if (@prio) or (@prio_callout) -%>
     <% if @operatingsystem =~ /debian|ubuntu/i -%>
     # Default function to call to obtain a path priority value
     prio                    <%= @prio %>
@@ -63,34 +63,34 @@ defaults {
     <% end -%>
 <% end -%>
 
-<% if @path_checker != '' -%>
+<% if @path_checker -%>
     # Default method used to determine the paths' state
     path_checker            <%= @path_checker %>
 <% end -%>
 
-<% if @rr_min_io != '' -%>
+<% if @rr_min_io -%>
     # Number of IO to route to a path before switching to the next in the same
     # path group
     rr_min_io               <%= @rr_min_io %>
 <% end -%>
 
-<% if @rr_weight != '' -%>
+<% if @rr_weight -%>
     rr_weight               <%= @rr_weight %>
 <% end -%>
 
-<% if @failback != '' -%>
+<% if @failback -%>
     #  tell the daemon to manage path group failback, or not to. 0 means
     #  immediate failback, values >0 means deffered failback expressed in seconds
     failback                <%= @failback %>
 <% end -%>
 
-<% if @no_path_retry != '' -%>
+<% if @no_path_retry -%>
     # tell the number of retries until disable queueing, or "fail" means
     # immediate failure (no queueing), "queue" means never stop queueing
     no_path_retry           <%= @no_path_retry%>
 <% end -%>
 
-<% if @user_friendly_names != '' -%>
+<% if @user_friendly_names -%>
     # Whether or not to use user-friendly names.
     # If set to "yes", using the bindings file /var/lib/multipath/bindings to
     # assign a persistent and unique alias to the multipath, in the form of
@@ -98,7 +98,7 @@ defaults {
     user_friendly_names     <%= @user_friendly_names %>
 <% end -%>
 
-<% if @max_fds != '' -%>
+<% if @max_fds -%>
     # Sets the maximum number of open file descriptors for the multipathd process.
     max_fds                 <%= @max_fds %>
 <% end -%>
