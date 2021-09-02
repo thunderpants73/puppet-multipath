@@ -16,17 +16,17 @@
 #
 # Note: respect the Naming standard provided here[http://projects.puppetlabs.com/projects/puppet/wiki/Module_Standards]
 class multipath::common(
-    Optional[String] $polling_interval                                                                                 = lookup('multipath::polling_interval'),
-    Optional[Enum['round-robin 0','queue-length 0','service-time 0']] $selector                                        = lookup('multipath::selector'),
-    Optional[Enum['failover','multibus','group_by_serial','group_by_prio','group_by_node_name']] $path_grouping_policy = lookup('multipath::path_grouping_policy'),
-    Optional[String] $getuid_callout                                                                                   = lookup('multipath::getuid_callout'),
-    Optional[String] $prio                                                                                             = lookup('multipath::prio'),
-    Optional[Enum['readsector0','tur','emc_clariion','hp_sw','rdac','directio','cciss_tur','none']] $path_checker      = lookup('multipath::path_checker'),
-    Optional[Enum['priorities','uniform']] $rr_weight                                                                  = lookup('multipath::rr_weight'),
-    Optional[Variant[Enum['immediate','manual','followover'], Integer]] $failback                                      = lookup('multipath::failback'),
-    Optional[Enum['fail','queue']] $no_path_retry                                                                      = lookup('multipath::no_path_retry'),
-    Optional[Enum['yes','no']] $user_friendly_names                                                                    = lookup('multipath::user_friendly_names'),
-    String $max_fds                                                                                                    = lookup('multipath::max_fds'),
+    Optional[String] $polling_interval                                                                                 = $multipath::polling_interval,
+    Optional[Enum['round-robin 0','queue-length 0','service-time 0']] $selector                                        = $multipath::selector,
+    Optional[Enum['failover','multibus','group_by_serial','group_by_prio','group_by_node_name']] $path_grouping_policy = $multipath::path_grouping_policy,
+    Optional[String] $getuid_callout                                                                                   = $multipath::getuid_callout,
+    Optional[String] $prio                                                                                             = $multipath::prio,
+    Optional[Enum['readsector0','tur','emc_clariion','hp_sw','rdac','directio','cciss_tur','none']] $path_checker      = $multipath::path_checker,
+    Optional[Enum['priorities','uniform']] $rr_weight                                                                  = $multipath::rr_weight,
+    Optional[Variant[Enum['immediate','manual','followover'], Integer]] $failback                                      = $multipath::failback,
+    Optional[Enum['fail','queue']] $no_path_retry                                                                      = $multipath::no_path_retry,
+    Optional[Enum['yes','no']] $user_friendly_names                                                                    = $multipath::user_friendly_names,
+    String $max_fds                                                                                                    = $multipath::max_fds,
 ){
 
     package { 'multipath':
