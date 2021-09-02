@@ -18,7 +18,7 @@ defaults {
     udev_dir                /dev
 <% end %>
 
-<% if @polling_interval != '' -%>
+<% if @polling_interval -%>
     # Interval between two path checks in seconds
     polling_interval        <%= @polling_interval %>
 <% end -%>
