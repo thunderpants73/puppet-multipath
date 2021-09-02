@@ -61,9 +61,9 @@ class multipath::common(
     # TODO: deal with ensure != 'present'
     concat { $multipath::configfile:
         warn    => false,
-        owner   => $multipath::configfile_owner,
-        group   => $multipath::configfile_group,
-        mode    => $multipath::configfile_mode,
+        owner   => lookup('multipath::configfile_owner'),
+        group   => lookup('multipath::configfile_group'),
+        mode    => lookup('multipath::configfile_mode'),
         require => Package['multipath'],
         notify  => Service['multipath'],
     }
