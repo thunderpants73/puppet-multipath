@@ -26,6 +26,7 @@ class multipath::common(
     Optional[Variant[Enum['immediate','manual','followover'], Integer]] $failback                                      = $multipath::failback,
     Optional[Enum['fail','queue']] $no_path_retry                                                                      = $multipath::no_path_retry,
     Optional[Enum['yes','no']] $user_friendly_names                                                                    = $multipath::user_friendly_names,
+    Optional[Enum['strict','no','yes','greedy','smart']] $find_multipaths                                              = $multipath::find_multipaths,
     String $max_fds                                                                                                    = $multipath::max_fds,
 ){
 
