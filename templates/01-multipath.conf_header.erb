@@ -84,7 +84,7 @@ defaults {
     failback                <%= @failback %>
 <% end -%>
 
-<% if @no_path_retry != -%>
+<% if @no_path_retry != '' -%>
     # tell the number of retries until disable queueing, or "fail" means
     # immediate failure (no queueing), "queue" means never stop queueing
     no_path_retry           <%= @no_path_retry%>
