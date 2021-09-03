@@ -1,53 +1,50 @@
     device {
         vendor              "<%= @vendorname %>"
         product             "<%= @product %>"
-<% if @hardware_handler != '' -%>
-
+<% if @hardware_handler -%>
         # module that will be used to perform hardware specific actions when
         # switching path groups or handling IO errors
         hardware_handler    "<%= @hardware_handler %>"
 <% end -%>
-<% if @product_blacklist != '' -%>
-
+<% if @product_blacklist -%>
         # Product strings to blacklist for this vendor
         product_blacklist   <%= @product_blacklist %>
 <% end -%>
-
-<% if @path_grouping_policy != scope.lookupvar('multipath::path_grouping_policy') -%>
+<% if @path_grouping_policy -%>
         path_grouping_policy <%= @path_grouping_policy %>
 <% end -%>
-<% if @getuid_callout != scope.lookupvar('multipath::getuid_callout') -%>
+<% if @getuid_callout -%>
         getuid_callout      "<%= @getuid_callout %>"
 <% end -%>
-<% if @path_selector != scope.lookupvar('multipath::selector') -%>
+<% if @path_selector -%>
         path_selector       "<%= @path_selector %>"
 <% end -%>
-<% if @path_checker != scope.lookupvar('multipath::path_checker') -%>
+<% if @path_checker -%>
         path_checker        "<%= @path_checker %>"
 <% end -%>
-<% if @features != '' -%>
+<% if @features -%>
         # The extra features of multipath devices.
         features            "<%= @features %>"
 <% end -%>
-<% if @prio_callout != scope.lookupvar('multipath::prio_callout') -%>
+<% if @prio_callout -%>
         prio_callout        "<%= @prio_callout %>"
 <% end -%>
-<% if @failback != scope.lookupvar('multipath::failback') -%>
+<% if @failback -%>
         failback            <%= @failback %>
 <% end -%>
-<% if @rr_weight != scope.lookupvar('multipath::rr_weight')  -%>
+<% if @rr_weight  -%>
         rr_weight           <%= @rr_weight %>
 <% end -%>
-<% if @no_path_retry != scope.lookupvar('multipath::no_path_retry') -%>
+<% if @no_path_retry -%>
         no_path_retry       <%= @no_path_retry %>
 <% end -%>
-<% if @rr_min_io != scope.lookupvar('multipath::rr_min_io') -%>
+<% if @rr_min_io -%>
         rr_min_io           <%= @rr_min_io %>
 <% end -%>
-<% if @fast_io_fail_tmo != '' -%>
-        fast_io_fail_tmo           <%= @fast_io_fail_tmo %>
+<% if @fast_io_fail_tmo -%>
+        fast_io_fail_tmo       <%= @fast_io_fail_tmo %>
 <% end -%>
-<% if @dev_loss_tmo != '' -%>
+<% if @dev_loss_tmo -%>
         dev_loss_tmo           <%= @dev_loss_tmo %>
 <% end -%>
     }

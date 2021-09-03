@@ -72,17 +72,15 @@ define multipath::path (
     $devalias          = '',
     $content           = '',
     $source            = '',
-    $path_grouping_policy = $multipath::params::path_grouping_policy,
-    $prio_callout      = $multipath::params::prio_callout,
-    $path_selector     = $multipath::params::selector,
-    $failback          = $multipath::params::failback,
-    $no_path_retry     = $multipath::params::no_path_retry,
-    $rr_weight         = $multipath::params::rr_weight,
-    $rr_min_io         = $multipath::params::rr_min_io
+    $path_grouping_policy = $multipath::path_grouping_policy,
+    $prio_callout      = $multipath::prio_callout,
+    $path_selector     = $multipath::selector,
+    $failback          = $multipath::failback,
+    $no_path_retry     = $multipath::no_path_retry,
+    $rr_weight         = $multipath::rr_weight,
+    $rr_min_io         = $multipath::rr_min_io
 )
 {
-
-    include ::multipath::params
 
     # $name is provided by define invocation and is should be set to the
     # vendor, unless the vendor attribute is set
@@ -118,8 +116,8 @@ define multipath::path (
         }
     }
 
-    concat::fragment { "${multipath::params::configfile}_multipath_${wwid}":
-        target  => $multipath::params::configfile,
+    concat::fragment { "${multipath::configfile}_multipath_${wwid}":
+        target  => $multipath::configfile,
         order   => '60',
         content => $real_content,
         source  => $real_source,
