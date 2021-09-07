@@ -92,33 +92,18 @@ class multipath::common(
             order   => '01',
         }
 
-        if $multipath::show_comments {
-            # 'devices' section
-            concat::fragment { "${multipath::configfile}_devices_header":
-                target => $multipath::configfile,
-                source => 'puppet:///modules/multipath/10-multipath-devices_header',
-                order  => '10',
-            }
-            concat::fragment { "${multipath::configfile}_devices_footer":
-                target => $multipath::configfile,
-                source => 'puppet:///modules/multipath/30-multipath-devices_footer',
-                order  => '30',
-            }
-
-            # 'blacklist' section
-            concat::fragment { "${multipath::configfile}_blacklist_header":
-                target => $multipath::configfile,
-                source => 'puppet:///modules/multipath/35-multipath-blacklist_header',
-                order  => '35',
-            }
-
-            # 'blacklist_exceptions' section
-            concat::fragment { "${multipath::configfile}_blacklist_exceptions_header":
-                target => $multipath::configfile,
-                source => 'puppet:///modules/multipath/45-multipath-blacklist_exceptions_header',
-                order  => '45',
-            }
+        # 'devices' section
+        concat::fragment { "${multipath::configfile}_devices_header":
+            target => $multipath::configfile,
+            source => 'puppet:///modules/multipath/10-multipath-devices_header',
+            order  => '10',
         }
+        concat::fragment { "${multipath::configfile}_devices_footer":
+            target => $multipath::configfile,
+            source => 'puppet:///modules/multipath/30-multipath-devices_footer',
+            order  => '30',
+        }
+
         # 'multipaths' section
         concat::fragment { "${multipath::configfile}_multipaths_header":
             target  => $multipath::configfile,

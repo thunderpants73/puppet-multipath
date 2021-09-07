@@ -1,6 +1,7 @@
 
 ### list of per storage controller settings ###
 devices {
+<% if scope.lookupvar('multipath::show_comments') -%>
 #   Example (use multipath::device to add a new device entry)
 #   device {
 #       vendor      "COMPAQ  "
@@ -17,3 +18,4 @@ devices {
 #       product_blacklist   LUNZ
 #   }
 #
+<% end -%>
