@@ -118,20 +118,18 @@ class multipath::common(
                 source => 'puppet:///modules/multipath/45-multipath-blacklist_exceptions_header',
                 order  => '45',
             }
-
-            # 'multipaths' section
-            concat::fragment { "${multipath::configfile}_multipaths_header":
-                target => $multipath::configfile,
-                source => 'puppet:///modules/multipath/55-multipath-multipaths_header',
-                order  => '55',
-            }
-            concat::fragment { "${multipath::configfile}_multipaths_footer":
-                target => $multipath::configfile,
-                source => 'puppet:///modules/multipath/99-multipath-multipaths_footer',
-                order  => '99',
-            }
         }
-
+        # 'multipaths' section
+        concat::fragment { "${multipath::configfile}_multipaths_header":
+            target  => $multipath::configfile,
+            content => template('multipath/55-multipath-multipaths_header.erb'),
+            order   => '55',
+        }
+        concat::fragment { "${multipath::configfile}_multipaths_footer":
+            target => $multipath::configfile,
+            source => 'puppet:///modules/multipath/99-multipath-multipaths_footer',
+            order  => '99',
+        }
     }
 
 }

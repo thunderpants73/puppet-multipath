@@ -1,6 +1,7 @@
 
 ### List of multipaths finest-grained settings ###
 multipaths {
+<% if scope.lookupvar('multipath::show_comments') -%>
 #
 #   Example (use multipath::path to add a new entry)
 #   multipath {
@@ -18,3 +19,4 @@ multipaths {
 #       alias           red
 #   }
 #
+<% end -%>

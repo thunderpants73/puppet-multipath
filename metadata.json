@@ -51,7 +51,6 @@
     "multipath::common",
     "multipath::common::debian",
     "multipath::common::redhat",
-    "multipath::params"
   ],
   "definitions": [
     "multipath::blacklist",
