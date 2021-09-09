@@ -79,7 +79,8 @@ define multipath::blacklist (
     $wwid         = [],
     $devnode      = [],
     $vendor       = '',
-    $product      = ''
+    $product      = '',
+    $concat_order = '40',
 )
 {
 
@@ -105,7 +106,7 @@ define multipath::blacklist (
         default => ''
     }
     $order = $is_exception ? {
-        false   => '40',
+        false   => $concat_order,
         default => '50'
     }
 

@@ -18,7 +18,6 @@ defaults {
     udev_dir                /dev
 <% end %>
 <% if @polling_interval -%>
-    # Interval between two path checks in seconds
     polling_interval        <%= @polling_interval %>
 <% end -%>
 <% if @selector -%>
@@ -35,12 +34,10 @@ defaults {
     <% end %>
 <% end -%>
 <% if @path_grouping_policy -%>
-    # Default path grouping policy to apply to unspecified multipaths
     path_grouping_policy    <%= @path_grouping_policy %>
 <% end -%>
 <% if @getuid_callout -%>
     <% if ((@operatingsystem =~ /centos|redhat/i) and (@lsbmajdistrelease.to_i <= 6)) -%>
-    # Default program and args to callout to obtain a unique path identifier
     getuid_callout          "<%= @getuid_callout %>"
     <% end -%>
 <% end -%>
@@ -58,7 +55,6 @@ defaults {
     <% end -%>
 <% end -%>
 <% if @path_checker -%>
-    # Default method used to determine the paths' state
     path_checker            <%= @path_checker %>
 <% end -%>
 <% if @rr_min_io -%>
@@ -75,19 +71,12 @@ defaults {
     failback                <%= @failback %>
 <% end -%>
 <% if @no_path_retry -%>
-    # tell the number of retries until disable queueing, or "fail" means
-    # immediate failure (no queueing), "queue" means never stop queueing
     no_path_retry           <%= @no_path_retry%>
 <% end -%>
 <% if @user_friendly_names -%>
-    # Whether or not to use user-friendly names.
-    # If set to "yes", using the bindings file /var/lib/multipath/bindings to
-    # assign a persistent and unique alias to the multipath, in the form of
-    # mpath<n>. If set to "no" use the WWID as the alias.
     user_friendly_names     <%= @user_friendly_names %>
 <% end -%>
 <% if @max_fds -%>
-    # Sets the maximum number of open file descriptors for the multipathd process.
     max_fds                 <%= @max_fds %>
 <% end -%>
 <% if @find_multipaths -%>
