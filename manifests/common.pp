@@ -94,9 +94,9 @@ class multipath::common(
 
         # 'devices' section
         concat::fragment { "${multipath::configfile}_devices_header":
-            target => $multipath::configfile,
-            source => template('multipath/10-multipath-devices_header.erb'),
-            order  => '10',
+            target  => $multipath::configfile,
+            content => template('multipath/10-multipath-devices_header.erb'),
+            order   => '10',
         }
         concat::fragment { "${multipath::configfile}_devices_footer":
             target => $multipath::configfile,
