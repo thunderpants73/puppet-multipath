@@ -2,12 +2,9 @@
         vendor              "<%= @vendorname %>"
         product             "<%= @product %>"
 <% if @hardware_handler -%>
-        # module that will be used to perform hardware specific actions when
-        # switching path groups or handling IO errors
         hardware_handler    "<%= @hardware_handler %>"
 <% end -%>
 <% if @product_blacklist -%>
-        # Product strings to blacklist for this vendor
         product_blacklist   <%= @product_blacklist %>
 <% end -%>
 <% if @path_grouping_policy -%>
@@ -23,7 +20,6 @@
         path_checker        "<%= @path_checker %>"
 <% end -%>
 <% if @features -%>
-        # The extra features of multipath devices.
         features            "<%= @features %>"
 <% end -%>
 <% if @prio_callout -%>
